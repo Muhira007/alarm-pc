@@ -1,0 +1,79 @@
+<Window x:Class="AlarmGiliran.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Style="{StaticResource {x:Type Window}}"
+        Title="Alarm Giliran • Imran &amp; Lukman" Icon="Assets/alarm.ico" Width="1000" Height="740" MinWidth="640" MinHeight="460" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanMinimize" Closing="OnClosing">
+  <Border BorderBrush="#DCE1EF" BorderThickness="1">
+    <Viewbox Stretch="Uniform"><Grid Width="998" Height="738">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="244" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+      <Border Background="#253255">
+        <Grid Margin="28,30">
+          <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,58">
+              <Border Width="34" Height="34" CornerRadius="11" Background="#8392FF"><TextBlock Text="&#xE916;" FontFamily="Segoe MDL2 Assets" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+              <TextBlock Text="giliran." FontSize="24" FontWeight="Bold" Foreground="White" Margin="10,0,0,0" />
+            </StackPanel>
+            <TextBlock Text="WAKTU BERMAIN" FontSize="10" FontWeight="Bold" Foreground="#A8B5DC" />
+            <TextBlock Text="Bergantian,&#x0a;sama-sama&#x0a;senang." Foreground="White" FontSize="29" FontWeight="SemiBold" LineHeight="38" Margin="0,14,0,20" />
+            <TextBlock Text="Satu laptop, dua jagoan.&#x0a;Setiap anak punya waktunya." Foreground="#B9C4E1" FontSize="13" LineHeight="22" />
+            <Border Background="#344368" CornerRadius="16" Padding="16" Margin="0,34,0,0">
+              <StackPanel>
+                <TextBlock Text="TEMAN BERMAIN" Foreground="#B9C4E1" FontSize="10" FontWeight="Bold" Margin="0,0,0,15" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+                  <Border Background="#DDE3FF" Width="32" Height="32" CornerRadius="16"><TextBlock Text="I" FontWeight="Bold" Foreground="#5265DF" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                  <TextBlock Text="Imran" Foreground="White" FontSize="15" Margin="12,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                  <Border Background="#FFE3CC" Width="32" Height="32" CornerRadius="16"><TextBlock Text="L" FontWeight="Bold" Foreground="#B66C31" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                  <TextBlock Text="Lukman" Foreground="White" FontSize="15" Margin="12,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+          <StackPanel Grid.Row="2"><TextBlock Text="OTOMATIS &amp; ADIL" Foreground="#DCE4FF" FontSize="10" FontWeight="Bold" /><TextBlock Text="Durasi yang sama.&#x0a;Giliran yang terus berganti." Foreground="#A8B5DC" FontSize="12" LineHeight="20" Margin="0,10,0,0" /></StackPanel>
+        </Grid>
+      </Border>
+      <Grid Grid.Column="1" Margin="32,24,32,20">
+        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+        <Grid MouseLeftButtonDown="DragHeader" Background="Transparent">
+          <StackPanel><TextBlock Text="Alarm bergiliran" FontSize="23" FontWeight="Bold" /><TextBlock Text="Biar alarm yang mengingatkan." Foreground="{StaticResource Muted}" FontSize="13" Margin="0,5,0,0" /></StackPanel>
+          <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Padding="12" Margin="0,0,8,0" Click="MinimizeClick" ToolTip="Kecilkan jendela" AutomationProperties.Name="Kecilkan jendela" />
+            <Button Content="⚙  Pengaturan" Click="SettingsClick" />
+          </StackPanel>
+        </Grid>
+        <Border Grid.Row="1" Background="#EAF0FF" CornerRadius="10" Padding="14,10" Margin="0,24,0,0">
+          <TextBlock x:Name="StatusText" Text="SIAP DIMULAI  •  Pilih durasi dan pemain pertama" Foreground="#5367AD" FontSize="12" FontWeight="SemiBold" />
+        </Border>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="0,12,0,12">
+          <TextBlock x:Name="PlayerHeading" Text="Giliran pertama: Imran" HorizontalAlignment="Center" FontSize="21" FontWeight="SemiBold" Margin="0,0,0,12" />
+          <Grid Width="254" Height="254">
+            <Ellipse Stroke="#E5E9F4" StrokeThickness="9" Margin="7" />
+            <Path x:Name="ProgressArc" Stroke="#6375EB" StrokeThickness="9" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+              <TextBlock Text="SISA WAKTU" Foreground="{StaticResource Muted}" FontWeight="SemiBold" FontSize="11" HorizontalAlignment="Center" />
+              <TextBlock x:Name="TimeText" Text="30:00" FontSize="54" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,2,0,2" />
+              <TextBlock x:Name="TimerCaption" Text="menit bermain" Foreground="{StaticResource Muted}" FontSize="12" HorizontalAlignment="Center" />
+            </StackPanel>
+          </Grid>
+          <TextBlock x:Name="NextText" Text="Berikutnya Lukman · 30 menit" Foreground="{StaticResource Muted}" FontSize="14" HorizontalAlignment="Center" Margin="0,14,0,0" />
+        </StackPanel>
+        <Grid Grid.Row="3" Margin="0,0,0,18">
+          <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition Width="14" /><ColumnDefinition /></Grid.ColumnDefinitions>
+          <Border Background="White" CornerRadius="14" Padding="18,14" BorderBrush="#E7EAF2" BorderThickness="1">
+            <StackPanel><TextBlock Text="DURASI PER ANAK" FontSize="10" FontWeight="SemiBold" Foreground="{StaticResource Muted}" /><TextBlock x:Name="DurationText" Text="30 menit" FontSize="19" FontWeight="SemiBold" Margin="0,5,0,8" />
+              <StackPanel Orientation="Horizontal"><Button x:Name="TwentyButton" Content="20 mnt" Tag="20" Click="DurationClick" Padding="12,7" FontSize="12" Margin="0,0,8,0" /><Button x:Name="ThirtyButton" Content="30 mnt" Tag="30" Click="DurationClick" Padding="12,7" FontSize="12" /></StackPanel>
+            </StackPanel>
+          </Border>
+          <Border Grid.Column="2" Background="White" CornerRadius="14" Padding="18,14" BorderBrush="#E7EAF2" BorderThickness="1">
+            <StackPanel><TextBlock x:Name="FirstLabel" Text="MULAI DARI" FontSize="10" FontWeight="SemiBold" Foreground="{StaticResource Muted}" /><TextBlock x:Name="FirstPlayerText" Text="Imran" FontSize="19" FontWeight="SemiBold" Margin="0,5,0,8" />
+              <Button x:Name="SwitchPlayerButton" Content="Ganti pemain pertama ⇄" Click="SwitchPlayerClick" Padding="12,7" FontSize="12" HorizontalAlignment="Left" />
+            </StackPanel>
+          </Border>
+        </Grid>
+        <StackPanel Grid.Row="4">
+          <Button x:Name="StartButton" Content="Mulai giliran Imran  →" Style="{StaticResource PrimaryButton}" FontSize="16" Padding="20,15" Click="StartClick" />
+          <TextBlock x:Name="FooterText" Text="Alarm berbunyi → tekan Stop → giliran berikutnya dimulai." HorizontalAlignment="Center" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,12,0,0" />
+        </StackPanel>
+      </Grid>
+    </Grid></Viewbox>
+  </Border>
+</Window>
